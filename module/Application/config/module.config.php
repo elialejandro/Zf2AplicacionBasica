@@ -7,8 +7,6 @@
  * @license   http://framework.zend.com/license/new-bsd New BSD License
  */
 
-namespace Application;
-
 return array(
     'router' => array(
         'routes' => array(
@@ -75,7 +73,7 @@ return array(
     ),
     'controllers' => array(
         'invokables' => array(
-            'Application\Controller\Index' => Controller\IndexController::class
+            'Application\Controller\Index' => 'Application\Controller\IndexController',
         ),
     ),
     'view_manager' => array(
