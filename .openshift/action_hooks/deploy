@@ -1,9 +1,9 @@
 #!/bin/bash
-cd $OPENSHIFT_REPO_DIR/app/config/
+cd $OPENSHIFT_REPO_DIR/config/autoload
 sleep 2
-OPENSHIFT_CONFIG=$OPENSHIFT_REPO_DIR/app/config/openshift.config.php.dist
+OPENSHIFT_CONFIG=$OPENSHIFT_REPO_DIR/config/autoload/openshift.config.php.dist
 echo "Copiando $OPENSHIFT_CONFIG"
-cp -v $OPENSHIFT_CONFIG $OPENSHIFT_REPO_DIR/app/config/openshift.config.php
+cp -v $OPENSHIFT_CONFIG $OPENSHIFT_REPO_DIR/config/autoload/openshift.config.php
 echo "Se a copiado la configuración correctamente"
 
 cd $OPENSHIFT_REPO_DIR
