@@ -1,0 +1,12 @@
+#!/bin/bash
+cd $OPENSHIFT_REPO_DIR/app/config/
+sleep 2
+OPENSHIFT_CONFIG=$OPENSHIFT_REPO_DIR/app/config/openshift.config.php.dist
+echo "Copiando $OPENSHIFT_CONFIG"
+cp -v $OPENSHIFT_CONFIG $OPENSHIFT_REPO_DIR/app/config/openshift.config.php
+echo "Se a copiado la configuración correctamente"
+
+cd $OPENSHIFT_REPO_DIR
+curl -sS https://getcomposer.org/installer | php
+./composer.phar self-update
+./composer.phar install

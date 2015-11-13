@@ -1,0 +1,26 @@
+<?php
+
+$db = array(
+    "host"      => getenv('OPENSHIFT_MYSQL_DB_HOST'),
+    "dbname"    => "zf",
+    "username"  => getenv('OPENSHIFT_MYSQL_DB_USERNAME'),
+    "password"  => getenv('OPENSHIFT_MYSQL_DB_PASSWORD')
+);
+
+return array(
+    'db' => array(
+         'driver'         => 'Pdo',
+         'dsn'            => sprintf('mysql:dbname=%s;host=%s', $db["dbname"], $db["host"]),
+         'username'       => $db["username"],
+         'password'       => $db["password"],
+         'driver_options' => array(
+             PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+         ),
+     ),
+     'service_manager' => array(
+         'factories' => array(
+             'Zend\Db\Adapter\Adapter'
+                     => 'Zend\Db\Adapter\AdapterServiceFactory',
+         ),
+     ),
+);
