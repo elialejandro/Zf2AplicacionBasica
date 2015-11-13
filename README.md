@@ -1,72 +1,64 @@
-ZendSkeletonApplication
+ZF2 Aplicacion Básica
 =======================
 
-Introduction
+Introdución
 ------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
 
-Installation using Composer
----------------------------
+Esta es una plantilla simple con la que pueden comenzar a crear
+sus aplicaciones basadas en Zend Framework 2. También cuanta 
+con Bootstrap 3 como base para crear la vista.
 
-The easiest way to create a new ZF2 project is to use [Composer](https://getcomposer.org/). If you don't have it already installed, then please install as per the [documentation](https://getcomposer.org/doc/00-intro.md).
-
-
-Create your new ZF2 project:
-
-    composer create-project -n -sdev zendframework/skeleton-application path/to/install
-
+Incluye
+-------
+* Manejo de usuarios
+* Login
+* Administrador
 
 
 ### Installation using a tarball with a local Composer
 
-If you don't have composer installed globally then another way to create a new ZF2 project is to download the tarball and install it:
+Si no tienes instalado Composer de forma global puedes hacer lo siguiente:
 
-1. Download the [tarball](https://github.com/zendframework/ZendSkeletonApplication/tarball/master), extract it and then install the dependencies with a locally installed Composer:
+1. Descargar [Zf2AplicacionBasica](https://github.com/elialejandro/Zf2AplicacionBasica/tarball/master), 
+   extraer y despues instalar las dependencias:
 
-        cd my/project/dir
-        curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
+        cd mi/proycto/dir
+        curl -#L https://github.com/elialejandro/Zf2AplicacionBasica/tarball/master | tar xz --strip-components=1
     
 
-2. Download composer into your project directory and install the dependencies:
+2. Descargar composer en el directorio del proyecto e instalar las dependencias:
 
         curl -s https://getcomposer.org/installer | php
         php composer.phar install
 
-If you don't have access to curl, then install Composer into your project as per the [documentation](https://getcomposer.org/doc/00-intro.md).
-
-Web server setup
-----------------
+Configuración del servidor web
+------------------------------
 
 ### PHP CLI server
 
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root
-directory:
+Simplemente ejecutar el siguiente comando:
 
     php -S 0.0.0.0:8080 -t public/ public/index.php
 
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
+Este servidor debería de iniciar en el puerto 8080, y estar configurado en todas las interfaces de red.
 
-**Note:** The built-in CLI server is *for development only*.
+**Note:** El servidor CLI es *solo para desarrollo*.
 
-### Vagrant server
+### Servidor Vagrant
 
-This project supports a basic [Vagrant](http://docs.vagrantup.com/v2/getting-started/index.html) configuration with an inline shell provisioner to run the Skeleton Application in a [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+Este proyecto incluse una configuración básica de [Vagrant](http://docs.vagrantup.com/v2/getting-started/index.html)  que se ejecuta sobre [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
 
-1. Run vagrant up command
+1. Ejecutar el comando:
 
     vagrant up
 
-2. Visit [http://localhost:8085](http://localhost:8085) in your browser
+2. Visitar [http://localhost:8085](http://localhost:8085) en tu navegador
 
-Look in [Vagrantfile](Vagrantfile) for configuration details.
+Mira el archivo [Vagrantfile](Vagrantfile) para detalles de la configuración.
 
-### Apache setup
+### Configuración de Apache
 
-To setup apache, setup a virtual host to point to the public/ directory of the
-project and you should be ready to go! It should look something like below:
+Si tienes un servidor instalado en tu ordenador puedes crear un host virtual con la siguiente configuración:
 
     <VirtualHost *:80>
         ServerName zf2-app.localhost
@@ -81,38 +73,3 @@ project and you should be ready to go! It should look something like below:
             </IfModule>
         </Directory>
     </VirtualHost>
-
-### Nginx setup
-
-To setup nginx, open your `/path/to/nginx/nginx.conf` and add an
-[include directive](http://nginx.org/en/docs/ngx_core_module.html#include) below
-into `http` block if it does not already exist:
-
-    http {
-        # ...
-        include sites-enabled/*.conf;
-    }
-
-
-Create a virtual host configuration file for your project under `/path/to/nginx/sites-enabled/zf2-app.localhost.conf`
-it should look something like below:
-
-    server {
-        listen       80;
-        server_name  zf2-app.localhost;
-        root         /path/to/zf2-app/public;
-
-        location / {
-            index index.php;
-            try_files $uri $uri/ @php;
-        }
-
-        location @php {
-            # Pass the PHP requests to FastCGI server (php-fpm) on 127.0.0.1:9000
-            fastcgi_pass   127.0.0.1:9000;
-            fastcgi_param  SCRIPT_FILENAME /path/to/zf2-app/public/index.php;
-            include fastcgi_params;
-        }
-    }
-
-Restart the nginx, now you should be ready to go!
