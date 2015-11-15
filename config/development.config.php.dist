@@ -1,0 +1,21 @@
+<?php 
+/**
+ * Ambiente de dasarrollo
+ */
+ 
+return array(
+    'modules' => array(
+        'ZFTool',
+        'ZendDeveloperTools',
+    ),
+    // development time configuration globbing
+    'module_listener_options' => array(
+        'config_glob_paths' => array('config/autoload/{,*.}{global,local}-development.php'),
+        // Turn off caching
+        'config_cache_enabled' => false,
+        'module_map_cache_enabled' => false,
+    ),
+    'view_manager' => array(
+        'display_exceptions' => true,
+    )
+);

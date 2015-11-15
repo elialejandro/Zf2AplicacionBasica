@@ -9,6 +9,12 @@
     "homepage": "http://framework.zend.com/",
     "require": {
         "php": ">=5.4",
-        "zendframework/zendframework": "~2.4"
+        "zendframework/zendframework": "~2.4",
+        "zfcampus/zf-development-mode": "2.*"
+    },
+    "require-dev": {
+        "zendframework/zend-developer-tools": "dev-master",
+        "zendframework/zftool" : "dev-master",
+        "bjyoungblood/bjy-profiler": "dev-master"
     }
 }

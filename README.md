@@ -14,8 +14,15 @@ Incluye
 * Login
 * Administrador
 
+### Modo desarrollo
 
-### Installation using a tarball with a local Composer
+    # Habilitar
+    $ php ./public/index.php development enable
+    
+    # Deshabilitar
+    $ php ./public/index.php development disable
+
+### Instalación usando el archivo tar.gz
 
 Si no tienes instalado Composer de forma global puedes hacer lo siguiente:
 
