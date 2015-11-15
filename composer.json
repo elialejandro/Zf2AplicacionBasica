@@ -10,7 +10,8 @@
     "require": {
         "php": ">=5.4",
         "zendframework/zendframework": "~2.4",
-        "zfcampus/zf-development-mode": "2.*"
+        "zfcampus/zf-development-mode": "2.*",
+        "rwoverdijk/assetmanager": "1.*"
     },
     "require-dev": {
         "zendframework/zend-developer-tools": "dev-master",
